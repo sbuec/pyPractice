@@ -1,27 +1,18 @@
 import pyray as pr
 
 class KeyboardService:
-    def __init__(self):
-        self._key_values = []
 
-        self._key_values.append(pr.KEY_A)
-        self._key_values.append(pr.KEY_D)
-        self._key_values.append(pr.KEY_S)
-        self._key_values.append(pr.KEY_W)
-
-        self._key_values.append(pr.KEY_J)
-        self._key_values.append(pr.KEY_L)
-        self._key_values.append(pr.KEY_K)
-        self._key_values.append(pr.KEY_I)
-
-    def is_key_down(self, keys):
+    def check_keys_pressed(self, keys):
         keys_pressed = []
 
-        for key in keys:
-            if self._key_values[key]:
-                keys_pressed.append[True]
+        keys_length = len(keys)
+
+
+        for i in range(keys_length):
+            if pr.is_key_down(keys[i]):
+                keys_pressed.append(True)
             else: 
-                self._keys_pressed[False]
+                keys_pressed.append(False)
 
         return keys_pressed
 
@@ -29,6 +20,18 @@ class KeyboardService:
 
 
     '''
+            key_pressed = []
+            for i in actor_key_length:
+                if pyray.is_key_down(dict)
+                    keys_pressed[i] = True
+                else:
+                    keys_pressed[i] = False
+            return keys_pressed
+                
+
+            if pyray.is_key_down(pyray.KEY_DOWN):
+            dy = 1
+
     def key_query(self, keys):
         keys_pressed = []
         for key in keys:

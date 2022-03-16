@@ -1,7 +1,5 @@
 
 import pyray as pr
-from General.color import Color
-from General.location import Location
 
 from Services.keyboardservice import KeyboardService
 from Services.videoservice import VideoService
@@ -24,15 +22,28 @@ def main():
     cast = []
 
     player1_keys = {
-        'a': 0,
-        's': 0,
-        'd': 0,
-        'w': 0
+        'a': pr.KEY_A,
+        's': pr.KEY_S,
+        'd': pr.KEY_D,
+        'w': pr.KEY_W
         }
 
-    cast.append(Actor(WIDTH, HEIGHT))
+    player2_keys = {
+        'j': pr.KEY_J,
+        'k': pr.KEY_K,
+        'l': pr.KEY_L,
+        'i': pr.KEY_I
+        }
+
+    print('Player 1 a-key: ', player1_keys['a'])
+    print('Pr key_down A:', pr.KEY_A)
+
+    cast.append(Actor(WIDTH, HEIGHT, player1_keys))
+    cast.append(Actor(WIDTH, HEIGHT, player2_keys))
+
 
     cast[0]._text = "k"
+    cast[1]._text = "o"
 
     director = Director(ks, vs, ts)
     director.run_game(cast)

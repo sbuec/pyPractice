@@ -29,6 +29,7 @@ class VideoService:
 
     # Draws single actor
     def draw_actor(self, cast):
+        
         text = cast[0]._text
         font_size = cast[0]._font_size
         color = cast[0]._color
@@ -42,8 +43,15 @@ class VideoService:
         pass
 
     # Draws all actors from all groups
-    def draw_all_actors(self, group):
-        pass
+    def draw_all_actors(self, cast):
+        cast_length = len(cast)
+        for i in range(cast_length):
+            text = cast[i]._text
+            font_size = cast[i]._font_size
+            color = cast[i]._color
+            point_x = cast[i]._location._x
+            point_y = cast[i]._location._y
+            pr.draw_text(text, point_x, point_y, font_size, color)
 
     # Checks if window is still open
     def check_window(self):

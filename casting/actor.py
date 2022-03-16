@@ -3,7 +3,7 @@ from General.location import Location
 
 
 class Actor:
-    def __init__(self, WIDTH, HEIGHT):
+    def __init__(self, WIDTH, HEIGHT, KEYS):
         color = self.set_color()
 
         location = Location()
@@ -13,6 +13,7 @@ class Actor:
         self._font_size = 20
         self._color = color
         self._location = location
+        self._keys = KEYS
 
     def set_color(self):
         color = Color()
