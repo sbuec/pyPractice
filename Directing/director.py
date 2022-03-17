@@ -1,11 +1,13 @@
 class Director:
-    def __init__(self, keyboardservice, videoservice, timeservice):
+    def __init__(self, keyboardservice, videoservice, timeservice, width, height):
         '''
         Creates object and adds video and keyboard services 
         '''
         self._ks = keyboardservice
         self._vs = videoservice
         self._ts = timeservice
+        self._width = width
+        self._height = height
 
 
     def run_game(self, cast):
@@ -17,24 +19,28 @@ class Director:
             self.do_outputs(cast)
         self._vs.close_window()
 
-    def get_inputs(self, cast):
-        cast_length = len(cast)
 
-        for i in range(cast_length):
-            value = self._ks.check_keys_pressed(cast[i]._keys)
+
+    def get_inputs(self, cast):
+        for actor in cast:
+            #Creates True/False list for pressed keys
+            actor._move = self._ks.check_keys_pressed(actor._keys).copy()
+            actor.move_actor()
+
+
 
     def do_updates(self, cast):
         #changes x/y every number of seconds
-        cast_length = len(cast)
-        '''
+        #cast_length = len(cast)
+        
         if self._ts.time_delay(1):
-            for i in range(cast_length):
+            for i in cast:
                 # Changes objects location
-                cast[i]._location.random_location(self._vs._width, self._vs._height)
+                #i._location.random_location(self._vs._width, self._vs._height)
             
                 # Changes objects color
-                cast[i]._color = cast[i].set_color()
-        '''
+                i._color = i.set_color()
+        
 
 
 
