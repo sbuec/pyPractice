@@ -8,6 +8,10 @@ from Services.timeservice import TimeService
 from Directing.director import Director
 
 from casting.actor import Actor
+from casting.actor import TextBased
+from casting.actor import ShapeBased
+from casting.cast import Cast
+
 
 WIDTH = 900
 HEIGHT = 600
@@ -19,7 +23,7 @@ def main():
     vs = VideoService(WIDTH, HEIGHT, FPS, CAPTION)
     ts = TimeService()
 
-    cast = []
+    cast = Cast()
 
     player1_keys = {
         'left': pr.KEY_A,
@@ -27,6 +31,8 @@ def main():
         'down': pr.KEY_S,
         'up': pr.KEY_W
         }
+    player1 = Actor(WIDTH, HEIGHT, player1_keys)
+
 
     player2_keys = {
         'left': pr.KEY_J,
@@ -34,21 +40,27 @@ def main():
         'down': pr.KEY_K,
         'up': pr.KEY_I
         }
-    player3_keys = {
+    player2 = Actor(WIDTH, HEIGHT, player1_keys)
+
+    player_rec_keys = {
         'left': pr.KEY_LEFT,
         'right': pr.KEY_RIGHT,
         'down': pr.KEY_DOWN,
-        'up': pr.KEY_UP
+        'up': pr.KEY_RIGHT
         }
 
-    cast.append(Actor(WIDTH, HEIGHT, player1_keys))
-    cast.append(Actor(WIDTH, HEIGHT, player2_keys))
-    cast.append(Actor(WIDTH, HEIGHT, player3_keys))
 
-    cast[0]._text = 'k'
-    cast[1]._text = 'o'
-    cast[2]._text = 'T'
+    cast.add_actor('text_based', player1)
+    cast.add_actor('text_based', player2)
+    dictionary = {
+        'Name1': 50,
+        'Name2': 20
+        }
+    for count in dictionary:
+        print('working')
 
+    for count in cast:
+        print('working')
 
     director = Director(ks, vs, ts, WIDTH, HEIGHT)
     director.run_game(cast)

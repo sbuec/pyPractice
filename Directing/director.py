@@ -9,7 +9,7 @@ class Director:
         self._width = width
         self._height = height
 
-
+    # Starts the window and runs program until the window is closed
     def run_game(self, cast):
         self._vs.open_window()
 
@@ -22,10 +22,10 @@ class Director:
 
 
     def get_inputs(self, cast):
-        for actor in cast:
+        for actor in cast._actors:
             #Creates True/False list for pressed keys
-            actor._move = self._ks.check_keys_pressed(actor._keys).copy()
-            actor.move_actor()
+            self._ks.check_keys_pressed(actor._keys, actor)
+            actor.move_player()
 
 
 
@@ -34,12 +34,12 @@ class Director:
         #cast_length = len(cast)
         
         if self._ts.time_delay(1):
-            for i in cast:
+            for actor in cast:
                 # Changes objects location
                 #i._location.random_location(self._vs._width, self._vs._height)
             
                 # Changes objects color
-                i._color = i.set_color()
+                actor._color = actor.set_color()
         
 
 

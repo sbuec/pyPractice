@@ -5,6 +5,6 @@ class Location:
         self._x = x
         self._y = y
 
-    def random_location(self, screen_width, screen_height, font_size):
+    def random_location(self, screen_width, screen_height):
         self._x = random.randint(0, screen_width)
         self._y = random.randint(0, screen_height)

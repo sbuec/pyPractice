@@ -27,6 +27,10 @@ class VideoService:
     def flush_buffer(self):
         pr.end_drawing()
 
+    # Checks if window is still open
+    def check_window(self):
+        return not pr.window_should_close()
+
     # Draws single actor
     def draw_actor(self, cast):
         
@@ -53,6 +57,4 @@ class VideoService:
             point_y = actor._location._y
             pr.draw_text(text, point_x, point_y, font_size, color)
 
-    # Checks if window is still open
-    def check_window(self):
-        return not pr.window_should_close()
+
