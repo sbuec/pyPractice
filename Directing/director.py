@@ -28,6 +28,13 @@ class Director:
             actor.move_player()
 
 
+            '''
+            
+    for key in cast._actors:
+        text = cast._actors[key]
+        print("Text: ", text)
+        '''
+
 
     def do_updates(self, cast):
         #changes x/y every number of seconds
@@ -47,8 +54,8 @@ class Director:
     def do_outputs(self, cast):
         self._vs.clear_buffer()
         
-        #self._vs.draw_actor(cast)
-        self._vs.get_all_actors(cast)
+        actors = cast.get_all_actors
+        self._vs.get_all_actors(actors)
 
         self._vs.flush_buffer()
 

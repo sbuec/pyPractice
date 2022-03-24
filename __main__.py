@@ -66,20 +66,14 @@ def main():
     player4 = Circle(WIDTH, HEIGHT, player4_keys, circumference)
 
 
-    cast.add_actor('text_based', player1)
-    cast.add_actor('text_based', player2)
-    cast.add_actor('shape_based', player3)
-    cast.add_actor('shape_based', player4)
+    cast.add_actor('text', player1)
+    cast.add_actor('text', player2)
+    cast.add_actor('rectangles', player3)
+    cast.add_actor('circles', player4)
 
-    dictionary = {
-        'Name1': 50,
-        'Name2': 20
-        }
-    for count in dictionary:
-        print('working')
-
-    for count in cast:
-        print('working')
+    
+    for key in cast._actors:
+        print("Text: ", cast._actors._text)
 
     director = Director(ks, vs, ts, WIDTH, HEIGHT)
     director.run_game(cast)

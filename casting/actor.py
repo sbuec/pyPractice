@@ -66,7 +66,7 @@ class Actor:
         return self._color
 
     def get_font_size(self):
-
+        pass
 
 
 
