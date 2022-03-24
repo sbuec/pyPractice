@@ -58,19 +58,27 @@ class Actor:
                 if self._location._y > 0:
                     self._location._y -= 1
 
+    # Gets values of actors
+    def get_text(self):
+        return self._text
+    
+    def get_color(self):
+        return self._color
 
-class TextBased(Actor):
-    def __init__(self, width, height, keys):
-        super().__init__(width, height, keys)
-        '''self._keys = keys
-        self._move = {
-            'left': False,
-            'right': False,
-            'down': False,
-            'up': False
-            }
-        '''
+    def get_font_size(self):
 
-class ShapeBased(Actor):
-    def __init__(self, width, height, keys):
-        super().__init__(width, height, keys)
+
+
+
+
+class Rectangle(Actor):
+    def __init__(self, screen_width, screen_height, keys, x_length, y_length):
+        super().__init__(screen_width, screen_height, keys)
+        self._x_length = x_length
+        self._y_length = y_length
+
+        
+class Circle(Actor):
+    def __init__(self, screen_width, screen_height, keys, circumference):
+        super().__init__(screen_width, screen_height, keys)
+        self._circumference = circumference

@@ -48,7 +48,7 @@ class Director:
         self._vs.clear_buffer()
         
         #self._vs.draw_actor(cast)
-        self._vs.draw_all_actors(cast)
+        self._vs.get_all_actors(cast)
 
         self._vs.flush_buffer()
 
