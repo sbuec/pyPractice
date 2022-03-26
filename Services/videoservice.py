@@ -32,19 +32,20 @@ class VideoService:
         return not pr.window_should_close()
 
     # Draws single actor
-    def draw_actor(self, cast):
+    def draw_actor(self, actor):
         
-        text = cast[0]._text
-        font_size = cast[0]._font_size
-        color = cast[0]._color
-        point_x = cast[0]._location._x
-        point_y = cast[0]._location._y
+        text = actor[0]._text
+        font_size = actor[0]._font_size
+        color = actor[0]._color
+        point_x = actor[0]._location._x
+        point_y = actor[0]._location._y
         pr.draw_text(text, point_x, point_y, font_size, color)
 
 
     # Draws all actors in specific group
     def draw_actors(self, group):
-        pass
+        for actor in group:
+            self._draw_actor
 
     # Draws all actors from all groups
     def draw_all_actors(self, cast):
@@ -57,4 +58,10 @@ class VideoService:
             point_y = actor._location._y
             pr.draw_text(text, point_x, point_y, font_size, color)
 
+    # Returns screen height
+    def get_height(self):
+        return self._height
 
+    # Returns screen width
+    def get_width(self):
+        return self._width

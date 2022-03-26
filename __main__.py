@@ -8,30 +8,32 @@ from Services.timeservice import TimeService
 from Directing.director import Director
 
 from casting.actor import Actor
+from casting.actor import Circle
+from casting.actor import Rectangle
 from casting.actor import TextBased
-from casting.actor import ShapeBased
+
 from casting.cast import Cast
 
 
-WIDTH = 900
-HEIGHT = 600
+screen_width = 900
+screen_height = 600
 FPS = 60
-CAPTION = 'Caption text here'
+CAPTION = "Caption text here"
 
 def main():
     ks = KeyboardService()
-    vs = VideoService(WIDTH, HEIGHT, FPS, CAPTION)
+    vs = VideoService(screen_width, screen_height, FPS, CAPTION)
     ts = TimeService()
 
     cast = Cast()
 
     player1_keys = {
-        'left': pr.KEY_A,
-        'right': pr.KEY_D,
-        'down': pr.KEY_S,
-        'up': pr.KEY_W
+        'a': pr.KEY_A,
+        's': pr.KEY_S,
+        'd': pr.KEY_D,
+        'w': pr.KEY_W
         }
-    player1 = Actor(WIDTH, HEIGHT, player1_keys)
+    player1 = TextBased(vs, player1_keys)
 
 
     player2_keys = {
@@ -40,29 +42,36 @@ def main():
         'down': pr.KEY_K,
         'up': pr.KEY_I
         }
-    player2 = Actor(WIDTH, HEIGHT, player1_keys)
+    player2 = TextBased(vs, player2_keys)
 
-    player_rec_keys = {
+    player3_keys = {
         'left': pr.KEY_LEFT,
         'right': pr.KEY_RIGHT,
         'down': pr.KEY_DOWN,
         'up': pr.KEY_RIGHT
         }
+    rec_width = 30
+    rec_height = 10
+    player3 = Rectangle(vs, player3_keys, rec_width, rec_height)
 
+    player4_keys = {
+        'left': pr.KEY_T,
+        'right': pr.KEY_L,
+        'down': pr.KEY_G,
+        'up': pr.KEY_H
+        }
+    circumference = 50
+    player4 = Circle(vs, player4_keys, circumference)
 
+   
     cast.add_actor('text_based', player1)
     cast.add_actor('text_based', player2)
-    dictionary = {
-        'Name1': 50,
-        'Name2': 20
-        }
-    for count in dictionary:
-        print('working')
+    cast.add_actor('rectangles', player3)
+    cast.add_actor('circles', player4)
 
-    for count in cast:
-        print('working')
 
-    director = Director(ks, vs, ts, WIDTH, HEIGHT)
+
+    director = Director(ks, vs, ts, screen_width, screen_height)
     director.run_game(cast)
 
 

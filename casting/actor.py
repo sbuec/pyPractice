@@ -3,17 +3,14 @@ from General.location import Location
 
 
 class Actor:
-    def __init__(self, width, height, keys):
-        font_size = 20
+    def __init__(self, vs, keys):
         color = self.set_color()
-        self._width = width
-        self._height = height
+        self._width = vs.get_width()
+        self._height = vs.get_height()
 
         location = Location()
-        location.random_location(width, height)
+        location.random_location(self._width, self._height)
 
-        self._text = ''
-        self._font_size = font_size
         self._color = color
         self._location = location
 
@@ -59,18 +56,22 @@ class Actor:
                     self._location._y -= 1
 
 
-class TextBased(Actor):
-    def __init__(self, width, height, keys):
-        super().__init__(width, height, keys)
-        '''self._keys = keys
-        self._move = {
-            'left': False,
-            'right': False,
-            'down': False,
-            'up': False
-            }
-        '''
 
-class ShapeBased(Actor):
-    def __init__(self, width, height, keys):
-        super().__init__(width, height, keys)
+
+class TextBased(Actor):
+    def __init__(self, vs, keys):
+        super().__init__(vs, keys)        
+        self._text = ''
+        self._font_size = 20
+
+class Rectangle(Actor):
+    def __init__(self, vs, keys, p_width, p_height):
+        super().__init__(vs, keys)
+        self._x_length = p_width
+        self._y_length = p_height
+
+        
+class Circle(Actor):
+    def __init__(self, vs, keys, circumference):
+        super().__init__(vs, keys)
+        self._circumference = circumference
