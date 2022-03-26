@@ -22,40 +22,28 @@ class Director:
 
 
     def get_inputs(self, cast):
-        for actor in cast._actors:
-            #Creates True/False list for pressed keys
-            self._ks.check_keys_pressed(actor._keys, actor)
-            actor.move_player()
-
-
-            '''
+        for actor in cast.get_all_actors():
+            # check_keys_pressed(self, dict, actor)
+            self._ks.check_keys_pressed(actor._keys, actor._move)
             
-    for key in cast._actors:
-        text = cast._actors[key]
-        print("Text: ", text)
-        '''
 
 
     def do_updates(self, cast):
         #changes x/y every number of seconds
-        #cast_length = len(cast)
-        
         if self._ts.time_delay(1):
-            for actor in cast:
+            for actor in cast.get_all_actors():
                 # Changes objects location
                 #i._location.random_location(self._vs._width, self._vs._height)
             
                 # Changes objects color
                 actor._color = actor.set_color()
-        
-
 
 
     def do_outputs(self, cast):
         self._vs.clear_buffer()
         
-        actors = cast.get_all_actors
-        self._vs.get_all_actors(actors)
+        actors = cast.get_all_actors()
+        #self._vs.get_all_actors(actors)
 
         self._vs.flush_buffer()
 

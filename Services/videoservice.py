@@ -58,4 +58,10 @@ class VideoService:
             point_y = actor._location._y
             pr.draw_text(text, point_x, point_y, font_size, color)
 
+    # Returns screen height
+    def get_height(self):
+        return self._height
 
+    # Returns screen width
+    def get_width(self):
+        return self._width
