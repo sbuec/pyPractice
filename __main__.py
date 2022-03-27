@@ -28,41 +28,45 @@ def main():
     cast = Cast()
 
     player1_keys = {
-        'a': pr.KEY_A,
-        's': pr.KEY_S,
-        'd': pr.KEY_D,
-        'w': pr.KEY_W
+        'left': pr.KEY_A,
+        'right': pr.KEY_D,
+        'up': pr.KEY_W,
+        'down': pr.KEY_S        
         }
     player1 = TextBased(vs, player1_keys)
-
 
     player2_keys = {
         'left': pr.KEY_J,
         'right': pr.KEY_L,
-        'down': pr.KEY_K,
-        'up': pr.KEY_I
+        'up': pr.KEY_I,
+        'down': pr.KEY_K
         }
     player2 = TextBased(vs, player2_keys)
 
     player3_keys = {
         'left': pr.KEY_LEFT,
         'right': pr.KEY_RIGHT,
-        'down': pr.KEY_DOWN,
-        'up': pr.KEY_RIGHT
+        'up': pr.KEY_UP,
+        'down': pr.KEY_DOWN
+
         }
-    rec_width = 30
-    rec_height = 10
-    player3 = Rectangle(vs, player3_keys, rec_width, rec_height)
+
+    #rec_width = 50
+    #rec_height = 30
+    #player3 = Rectangle(vs, player3_keys, rec_width, rec_height)
+    
 
     player4_keys = {
-        'left': pr.KEY_T,
-        'right': pr.KEY_L,
-        'down': pr.KEY_G,
-        'up': pr.KEY_H
+        'left': pr.KEY_F,
+        'right': pr.KEY_H,
+        'up': pr.KEY_T,
+        'down': pr.KEY_G
         }
-    circumference = 50
-    player4 = Circle(vs, player4_keys, circumference)
+    radius = 50
+    player4 = Circle(vs, player4_keys, radius)
 
+    radius = 20
+    player3 = Circle(vs, player3_keys, radius)
    
     cast.add_actor('text_based', player1)
     cast.add_actor('text_based', player2)

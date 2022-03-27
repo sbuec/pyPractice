@@ -31,21 +31,36 @@ class VideoService:
     def check_window(self):
         return not pr.window_should_close()
 
-    # Draws single actor
-    def draw_actor(self, actor):
+    # Draws single text-based actor
+    def draw_text_actor(self, actor):
         
-        text = actor[0]._text
-        font_size = actor[0]._font_size
-        color = actor[0]._color
-        point_x = actor[0]._location._x
-        point_y = actor[0]._location._y
+        text = actor._text
+        font_size = actor._font_size
+        color = actor._color
+        point_x = actor._location._x
+        point_y = actor._location._y
         pr.draw_text(text, point_x, point_y, font_size, color)
 
+    
+    # Draws single rectangle actor
+    def draw_rec_actor(self, actor):
+        width = actor._x_length
+        height = actor._y_length
+        color = actor._color
+        point_x = actor._location._x
+        point_y = actor._location._y
+        pr.draw_rectangle(point_x, point_y, width, height, color)
 
-    # Draws all actors in specific group
-    def draw_actors(self, group):
-        for actor in group:
-            self._draw_actor
+
+    # Draws single circle actor
+    def draw_circ_actor(self, actor):
+        radius = actor._radius
+        color = actor._color
+        point_x = actor._location._x
+        point_y = actor._location._y
+        pr.draw_circle(point_x, point_y, radius, color)
+
+
 
     # Draws all actors from all groups
     def draw_all_actors(self, cast):

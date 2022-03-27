@@ -23,27 +23,28 @@ class Director:
 
     def get_inputs(self, cast):
         for actor in cast.get_all_actors():
-            # check_keys_pressed(self, dict, actor)
-            self._ks.check_keys_pressed(actor._keys, actor._move)
-            
+            self._ks.check_keys_pressed(actor)
 
 
     def do_updates(self, cast):
-        #changes x/y every number of seconds
+        #changes color every number of seconds
         if self._ts.time_delay(1):
             for actor in cast.get_all_actors():
                 # Changes objects location
-                #i._location.random_location(self._vs._width, self._vs._height)
-            
-                # Changes objects color
+                #actor._location.random_location(self._vs._width, self._vs._height)
+                # Changes objects color  
                 actor._color = actor.set_color()
 
+        # Checks for collisions
+        for actor in cast.get_all_actors():
+            pass
 
     def do_outputs(self, cast):
         self._vs.clear_buffer()
-        
-        actors = cast.get_all_actors()
-        #self._vs.get_all_actors(actors)
+
+        for actor in cast.get_all_actors():
+            actor.move_actor()
+            actor.draw_object(self._vs)
 
         self._vs.flush_buffer()
 
